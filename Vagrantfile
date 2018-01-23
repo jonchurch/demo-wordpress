@@ -59,6 +59,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         mysql -e "create database wordpress;"
         mysql -e "grant all on wordpress.* to wordpress@'%' identified by 'wordpress';"
         echo -e "<?php\ndefine('DB_NAME','wordpress');\ndefine('DB_USER','wordpress');\ndefine('DB_PASSWORD','wordpress');" > /var/www/html/wp-config.local.php
+        mkdir /var/www/html/wp-content/uploads
+        mkdir /var/www/uploads
+        chgrp www-data /var/www/uploads
+        chmod 2775 /var/www/uploads
+        mount -o bind /var/www/uploads /var/www/html/wp-content/uploads
     SHELL
 
     # Add defined SSH public key to vagrant user's authorized_keys
