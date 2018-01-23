@@ -3,7 +3,7 @@ packages:
 	apt-get install -y mysql-client rsync
 
 createdb:
-	mysql -e -h mysql -u tugboat -ptugboat "create database demo;"
+	mysql -h mysql -u tugboat -ptugboat -e "create database demo;"
 
 importdb:
 	curl -L "https://www.dropbox.com/s/sabj5vq711bhst2/demo-wordpress-database.sql.gz?dl=0" > /tmp/database.sql.gz
