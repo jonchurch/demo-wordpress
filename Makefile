@@ -3,7 +3,7 @@ packages:
 	apt-get install -y mysql-client rsync
 
 wpconfig:
-	/bin/echo -e "<?php\ndefine('DB_NAME','demo');\ndefine('DB_USER','tugboat');\ndefine('DB_PASSWORD','tugboat');" > ${TUGBOAT_ROOT}/docroot/wp-config.local.php
+	/bin/echo -e "<?php\ndefine('DB_NAME','demo');\ndefine('DB_USER','tugboat');\ndefine('DB_PASSWORD','tugboat');\ndefine('DB_HOST','mysql');" > ${TUGBOAT_ROOT}/docroot/wp-config.local.php
 
 createdb:
 	mysql -h mysql -u tugboat -ptugboat -e "create database demo;"
