@@ -6,3 +6,6 @@
 
 # Local Vagrant config file
 /Vagrant.local.yml
+
+# Local wordpress config
+/docroot/wp-config.local.php
