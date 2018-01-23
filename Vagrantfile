@@ -49,7 +49,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.vm.provision "shell", inline: <<-SHELL
         export DEBIAN_FRONTEND=noninteractive
 		apt-get update
-        apt-get install -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" apache2 avahi-daemon libapache2-mod-php5 mysql-server php5-mysql
+        apt-get install -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" apache2 avahi-daemon libapache2-mod-php5 mysql-server php5-gd php5-mysql
         rm -rf /var/www/html
 		ln -sf /vagrant/docroot /var/www/html
         echo -e "<Directory \"/var/www/html\">\nAllowOverride All\n</Directory>" > /etc/apache2/conf-available/htaccess-override.conf
