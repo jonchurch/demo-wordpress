@@ -52,13 +52,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         apt-get install -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" apache2 avahi-daemon libapache2-mod-php5 mysql-server php5-gd php5-mysql
         rm -rf /var/www/html
 		ln -sf /vagrant/docroot /var/www/html
-        echo -e "<Directory \"/var/www/html\">\nAllowOverride All\n</Directory>" > /etc/apache2/conf-available/htaccess-override.conf
+        /bin/echo -e "<Directory \"/var/www/html\">\nAllowOverride All\n</Directory>" > /etc/apache2/conf-available/htaccess-override.conf
         a2enconf htaccess-override
         a2enmod rewrite
         service apache2 restart
         mysql -e "create database wordpress;"
         mysql -e "grant all on wordpress.* to wordpress@'%' identified by 'wordpress';"
-        echo -e "<?php\ndefine('DB_NAME','wordpress');\ndefine('DB_USER','wordpress');\ndefine('DB_PASSWORD','wordpress');" > /var/www/html/wp-config.local.php
+        /bin/echo -e "<?php\ndefine('DB_NAME','wordpress');\ndefine('DB_USER','wordpress');\ndefine('DB_PASSWORD','wordpress');" > /var/www/html/wp-config.local.php
         mkdir /var/www/html/wp-content/uploads
         mkdir /var/www/uploads
         chgrp www-data /var/www/uploads
