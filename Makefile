@@ -14,7 +14,7 @@ createdb:
 importdb:
 	curl -L "https://www.dropbox.com/s/sabj5vq711bhst2/demo-wordpress-database.sql.gz?dl=0" > /tmp/database.sql.gz
 	zcat /tmp/database.sql.gz | mysql -h mysql -u tugboat -ptugboat demo
-	wp --allow-root search-replace 'wordpress.local' "${TUGBOAT_PREVIEW}-${TUGBOAT_TOKEN}.${TUGBOAT_DOMAIN}" --skip-columns=guid
+	wp --allow-root --path=/var/www/html search-replace 'wordpress.local' "${TUGBOAT_PREVIEW}-${TUGBOAT_TOKEN}.${TUGBOAT_DOMAIN}" --skip-columns=guid
 
 importuploads:
 	curl -L "https://www.dropbox.com/s/ufn5e3qe3sisdks/demo-wordpress-uploads.tar.gz?dl=0" > /tmp/uploads.tar.gz
@@ -28,4 +28,4 @@ cleanup:
 tugboat-init: packages wpconfig createdb importdb importuploads cleanup
 tugboat-update: importdb importuploads cleanup
 tugboat-build:
-	wp --allow-root search-replace "${TUGBOAT_BASE_PREVIEW}-${TUGBOAT_BASE_PREVIEW_TOKEN}.${TUGBOAT_DOMAIN}" "${TUGBOAT_PREVIEW}-${TUGBOAT_TOKEN}.${TUGBOAT_DOMAIN}" --skip-columns=guid
+	wp --allow-root --path=/var/www/html search-replace "${TUGBOAT_BASE_PREVIEW}-${TUGBOAT_BASE_PREVIEW_TOKEN}.${TUGBOAT_DOMAIN}" "${TUGBOAT_PREVIEW}-${TUGBOAT_TOKEN}.${TUGBOAT_DOMAIN}" --skip-columns=guid
