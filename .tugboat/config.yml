@@ -41,6 +41,8 @@ services:
                 else
                     wp --allow-root --path="${DOCROOT}" search-replace 'wordpress.local' "${TUGBOAT_SERVICE_URL_HOST}" --skip-columns=guid
                 fi
+                wp --allow-root --path="${DOCROOT}" theme install slanted
+                wp --allow-root --path="${DOCROOT}" theme activate slanted
 
     mysql:
         image: tugboatqa/mysql:5
