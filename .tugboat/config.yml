@@ -26,10 +26,10 @@ services:
 
             update:
 
-                # Import uploads
-                - curl -L "https://www.dropbox.com/s/ufn5e3qe3sisdks/demo-wordpress-uploads.tar.gz?dl=0" > /tmp/uploads.tar.gz
-                - tar -C /tmp -zxf /tmp/uploads.tar.gz
-                - rsync -av --delete /tmp/uploads/ "${TUGBOAT_ROOT}/docroot/wp-content/uploads/"
+                # # Import uploads
+                # - curl -L "https://www.dropbox.com/s/ufn5e3qe3sisdks/demo-wordpress-uploads.tar.gz?dl=0" > /tmp/uploads.tar.gz
+                # - tar -C /tmp -zxf /tmp/uploads.tar.gz
+                # - rsync -av --delete /tmp/uploads/ "${TUGBOAT_ROOT}/docroot/wp-content/uploads/"
 
                 # Cleanup
                 - apt-get clean
@@ -46,6 +46,6 @@ services:
         image: tugboatqa/mysql:5
         commands:
             update:
-                - curl -L "https://www.dropbox.com/s/sabj5vq711bhst2/demo-wordpress-database.sql.gz?dl=0" > /tmp/database.sql.gz
-                - zcat /tmp/database.sql.gz | mysql tugboat
-                - rm /tmp/database.sql.gz
+                # - curl -L "https://www.dropbox.com/s/sabj5vq711bhst2/demo-wordpress-database.sql.gz?dl=0" > /tmp/database.sql.gz
+                # - zcat /tmp/database.sql.gz | mysql tugboat
+                # - rm /tmp/database.sql.gz
